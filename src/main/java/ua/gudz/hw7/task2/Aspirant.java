@@ -7,6 +7,7 @@ public class Aspirant extends Student {
         super(firstName, lastName, group, averageMark);
         this.sciWork = sciWork;
     }
+
     @Override
     public int getScholarship() {
         return super.getScholarship() + 100;
