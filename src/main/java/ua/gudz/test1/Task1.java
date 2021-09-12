@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Task1 {
     static int[] numbers = new int[]{3, 7, 4, 19, -9, 7, -9, -127};
+
     public static void main(String[] args) {
         System.out.println(countDifferent(sortArray()));
     }
