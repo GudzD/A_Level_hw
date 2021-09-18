@@ -1,0 +1,18 @@
+int[] array = {10, 1, 8, 6, 1, 2, 5};
+System.out.println(Arrays.toString(array));
+for (int i = 1; i < array.length; i++) {
+	if (array[i] < array[i - 1]) {
+		swap(array, i, i - 1);
+		for (int j = i - 1; (j - 1) >= 0; j--) {
+			if (array[j] < array[j - 1]) {
+				swap(array, j, j - 1);
+			} else {
+				break;
+			}
+		}
+	}
+}
+System.out.println(Arrays.toString(array));
+
+
+https://gist.github.com/GudzD/0a0f74aa439e31fea6ec066897cf3041
