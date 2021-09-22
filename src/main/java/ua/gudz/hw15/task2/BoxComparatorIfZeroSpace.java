@@ -10,6 +10,6 @@ public class BoxComparatorIfZeroSpace implements Comparator<Box> {
         int space2 = box2.getSpace();
         if (space1 == 0) space1 = 0x7fffffff;
         if (space2 == 0) space2 = 0x7fffffff;
-        return Integer.compare(space1, space2);
+        return Integer.compare(space2, space1);
     }
 }
