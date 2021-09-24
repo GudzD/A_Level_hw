@@ -1,6 +1,8 @@
 package ua.gudz.hw16;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Task2 {
     static String text = "Подруга дней моих суровых, Голубка дряхлая моя! Одна в глуши лесов сосновых " +
@@ -15,7 +17,7 @@ public class Task2 {
                 .replaceAll("[-+=.^:!,]", " ")
                 .replaceAll("\\s+", " ")
                 .split(" ");
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Integer> map = new LinkedHashMap<>();
         for (String t : item) {
             if (map.containsKey(t)) {
                 map.put(t, map.get(t) + 1);
@@ -23,7 +25,11 @@ public class Task2 {
                 map.put(t, 1);
             }
         }
-        System.out.println(map.entrySet());
+        map
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEach(System.out::println);
     }
 }
 
