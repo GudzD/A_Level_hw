@@ -57,7 +57,7 @@ public class Test {
         List<Box> myListOfBoxes = new ArrayList<>();
         myListOfBoxes.add(new Box(44, list1));
         myListOfBoxes.add(new Box(35, list2));
-        myListOfBoxes.add(new Box(12, list3));
+        myListOfBoxes.add(new Box(50, list3));
         myListOfBoxes.add(new Box(32, list4));
         myListOfBoxes.add(new Box(14, list5));
         myListOfBoxes.add(new Box(41, list6));
@@ -73,12 +73,12 @@ public class Test {
                 .forEach(System.out::println);
     }
 
-    private static List<Box> correctSize(List<Box> in){
+    private static List<Box> correctSize(List<Box> in) {
         Random random = new Random();
-        long min = random.nextInt(50);
+        int min = random.nextInt(50);
         System.out.println("Фильтр Box size от: " + min);
-        random.setSeed(min);
-        long max = random.nextInt(50);
+        // random.setSeed(min); - не понял почему не сработало
+        int max = random.nextInt(50 + min);
         System.out.println("Фильтр Box size до : " + max);
         System.out.println("Что в этих коробках: ");
         return in
