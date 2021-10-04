@@ -1,4 +1,4 @@
-package ua.gudz.hw17.Task5;
+package ua.gudz.hw17.task5;
 
 //Спроектировать обьект Box который содержит коллекцию Item и поле size. Item должен содержать поле name и cost
 //Создать коллекцию Box и инициализировать ее 10 коробками
