@@ -1,4 +1,4 @@
-package ua.gudz.hw18.task1;
+package ua.gudz.hw18;
 
 import lombok.Data;
 
