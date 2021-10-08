@@ -2,8 +2,7 @@ package ua.gudz.test2;
 
 import lombok.Data;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -70,6 +69,17 @@ class ShopService {
         }
         System.out.println(sum + "!!!!!!");
         return sum;
+    }
+
+    void write(ArrayList<? extends Electronics> in) {
+        try {;
+            FileOutputStream fos = new FileOutputStream("src/main/resources/myListOrder.csv");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(in);
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

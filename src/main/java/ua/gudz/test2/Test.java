@@ -16,6 +16,6 @@ public class Test {
         System.out.println(service.getOrder());
         service.sum(service.getOrder());
         invoice.whatType = service.sum(service.getOrder());
-
+        service.write(service.getOrder());
     }
 }
