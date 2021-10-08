@@ -14,14 +14,15 @@ import java.util.regex.Pattern;
 
 
 @Data
-public class ShopService {
-    static String[] randomItems;
-    static Random rn = new Random();
-    static ArrayList<Electronics> allObjectArrayList = new ArrayList<>(21);
-    static ArrayList<Electronics> order = new ArrayList<>(5);
+class ShopService {
+    private Object Telephone;
+    private String[] randomItems;
+    private ArrayList<Electronics> allObjectArrayList = new ArrayList<>(22);
+    private ArrayList<Electronics> order = new ArrayList<>(5);
+    private int sum;
 
 
-    static void read(File file) {
+    void read(File file) {
         if (file.exists()) {
             try {
                 List<String> list = Files.readAllLines(Paths.get(String.valueOf(file)));
@@ -32,12 +33,14 @@ public class ShopService {
                     Matcher matcherTelevision = Pattern.compile("Television,(.+?),(.+?)," +
                             "(.+?),(.+?),(.+?),(.+?)$").matcher(randomItems[i]);
                     if (matcherTelephone.find()) {
-                        allObjectArrayList.add(new Telephone(matcherTelephone.group(1)
+                        allObjectArrayList.add(new Telephone("Telephone"
+                                , matcherTelephone.group(1)
                                 , matcherTelephone.group(2)
                                 , matcherTelephone.group(4)
                                 , Integer.parseInt(matcherTelephone.group(6))));
                     } else if (matcherTelevision.find()) {
-                        allObjectArrayList.add(new Television(matcherTelevision.group(1)
+                        allObjectArrayList.add(new Television("Television"
+                                , matcherTelevision.group(1)
                                 , Integer.parseInt(matcherTelevision.group(3))
                                 , matcherTelevision.group(4)
                                 , matcherTelevision.group(5)
@@ -51,32 +54,19 @@ public class ShopService {
                         }
                 }
                 for (int i = 0; i < 4; i++) {
+                    Random rn = new Random();
                     order.add(allObjectArrayList.get(rn.nextInt(20)));
                 }
-//                BufferedWriter br = new BufferedWriter("Order.csv");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-     static int sum(ArrayList<Electronics> in) {
-        int sum = 1;
+    int sum(ArrayList<Electronics> in) {
+        int sum = 0;
         for (int i = 0; i < 4; i++) {
-            if(in.get(i).getClass() == Telephone.class){
-                in.stream()
-                        .map(Telephone::getPrice)
-                        .map(x->x+sum)
-                        .close();
-            }else {
-                in.stream()
-                        .map(Object::getClass)
-                        .map(o->Telephone.class)
-                        .peek(Telephone::getPrice)
-                        .map(x->x+sum)
-                        .close();
-            }
-
+            sum += in.get(i).getPrice();
         }
         System.out.println(sum + "!!!!!!");
         return sum;

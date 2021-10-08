@@ -2,22 +2,27 @@ package ua.gudz.test2;
 
 import lombok.Data;
 
+@SuppressWarnings("ALL")
 @Data
-public class Television extends Electronics{
-    private String series;
+class Television extends Electronics {
     private int diagonal;
-    private String screenType;
     private String country;
-    private int price;
+    private static String type;
 
-    public Television(String series, int diagonal, String screenType, String country, int price) {
-        this.series = series;
+    public Television(String type, String series, int diagonal, String screenType, String country, int price) {
+        super(type, series, screenType, price);
         this.diagonal = diagonal;
-        this.screenType = screenType;
         this.country = country;
-        this.price = price;
     }
 
-    public Television() {
+    @Override
+    public String toString() {
+        return "Television{" +
+                "price=" + getPrice() +
+                ", screenType='" + getScreenType() + '\'' +
+                ", series='" + getSeries() + '\'' +
+                ", diagonal=" + diagonal +
+                ", country='" + country + '\'' +
+                '}';
     }
 }
