@@ -1,17 +1,18 @@
 package ua.gudz.test2;
 
 import lombok.Data;
+import ua.gudz.test2.electronics.Electronics;
+import ua.gudz.test2.services.PersonService;
+import ua.gudz.test2.services.ShopService;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 @Data
+public
 class Invoice {
-    int whatType;
     private String type;
-    private String wholesale = "wholesale";
-    private String retail = "retail";
-    private int limit = new Random().nextInt(10000);
+    private int limit = new Random().nextInt(20000);
     Customer myCustomer;
     private ArrayList<Electronics> list;
 
@@ -23,5 +24,14 @@ class Invoice {
 
     public Invoice() {
     }
-}
 
+    public Invoice createInvoice(ArrayList<Electronics> in) {
+        Invoice invoice = new Invoice();
+        ShopService service = new ShopService();
+        int whatType = service.sum(in);
+        invoice.setType(whatType > limit ? "wholesale" : "retail");
+        invoice.setList(in);
+        invoice.setMyCustomer(new Customer(new PersonService()));
+        return invoice;
+    }
+}

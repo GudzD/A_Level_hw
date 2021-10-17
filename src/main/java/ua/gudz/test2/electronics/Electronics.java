@@ -1,9 +1,9 @@
-package ua.gudz.test2;
+package ua.gudz.test2.electronics;
 
 import lombok.Data;
 
 @Data
-class Electronics {
+public class Electronics {
     private String type;
     private String series;
     private String screenType;
@@ -15,5 +15,8 @@ class Electronics {
         this.series = series;
         this.screenType = screenType;
         this.price = price;
+    }
+
+    public Electronics() {
     }
 }

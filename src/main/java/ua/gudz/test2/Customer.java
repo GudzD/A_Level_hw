@@ -1,6 +1,7 @@
 package ua.gudz.test2;
 
 import lombok.Data;
+import ua.gudz.test2.services.PersonService;
 
 @Data
 public class Customer {

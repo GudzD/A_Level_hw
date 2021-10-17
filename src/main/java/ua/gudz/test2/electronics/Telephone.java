@@ -1,15 +1,12 @@
-package ua.gudz.test2;
+package ua.gudz.test2.electronics;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 
-@SuppressWarnings("Lombok")
 @EqualsAndHashCode(callSuper = true)
-@Data
-class Telephone extends Electronics implements Serializable {
-    private String model;
+
+public class Telephone extends Electronics {
+    public String model;
     private static String type;
 
 
@@ -18,10 +15,14 @@ class Telephone extends Electronics implements Serializable {
         this.model = model;
     }
 
+    public Telephone() {
+    }
+
     @Override
     public String toString() {
         return "Telephone{" +
-                "price=" + getPrice() +
+                "type=" + getType() +
+                ", price=" + getPrice() +
                 ", screenType='" + getScreenType() + '\'' +
                 ", series='" + getSeries() + '\'' +
                 ", model='" + model + '\'' +

@@ -1,12 +1,14 @@
-package ua.gudz.test2;
+package ua.gudz.test2.electronics;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
-@SuppressWarnings("ALL")
+
+@EqualsAndHashCode(callSuper = true)
 @Data
-class Television extends Electronics implements Serializable {
+public class Television extends Electronics implements Serializable {
     private int diagonal;
     private String country;
     private static String type;
@@ -17,10 +19,14 @@ class Television extends Electronics implements Serializable {
         this.country = country;
     }
 
+    public Television() {
+    }
+
     @Override
     public String toString() {
         return "Television{" +
-                "price=" + getPrice() +
+                "type=" + getType() +
+                ", price=" + getPrice() +
                 ", screenType='" + getScreenType() + '\'' +
                 ", series='" + getSeries() + '\'' +
                 ", diagonal=" + diagonal +
