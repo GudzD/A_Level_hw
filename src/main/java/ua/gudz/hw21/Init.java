@@ -1,4 +1,4 @@
-package ua.gudz.hw19;
+package ua.gudz.hw21;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
